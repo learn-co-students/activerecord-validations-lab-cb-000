@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   validate :non_clickbait
 
   def non_clickbait
+# if CLICKBAIT_PATTERN.none?{|pattern| pattern.match title}
+
     if self.title == nil
       errors.add(:title, "Needs a title.")
     else
