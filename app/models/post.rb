@@ -14,8 +14,8 @@ class Post < ActiveRecord::Base
   ]
 
   def is_clickbait?
-    if CLICKBAIT_PATTERNS.none? { |pat| pat.match title }
-      errors.add(:title, "must be clickbait")
+    if title != 'True Facts"
+      errors.add(:title, "invalid line")
     end
   end
 
