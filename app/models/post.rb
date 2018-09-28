@@ -6,10 +6,22 @@ class Post < ActiveRecord::Base
   validate :clickbait
 
 
+  # def clickbait
+  #   bait = ["Won't Believe", "Secret", "Top ", "Guess"]
+  #   if title
+  #     errors.add(:title, "Must have clickbait") unless (bait.collect{|phrase| title.include?(phrase)}.include?(true))
+  #   end
+  # end
+
   def clickbait
     bait = ["Won't Believe", "Secret", "Top ", "Guess"]
     if title
-      errors.add(:title, "Must have clickbait") unless (bait.collect{|phrase| title.include?(phrase)}.include?(true))
+      bait.each do |phrase|
+        if title.include?(phrase)
+          return nil
+        end
+      end
+      errors.add(:title,"Must have clickbait")
     end
   end
 
