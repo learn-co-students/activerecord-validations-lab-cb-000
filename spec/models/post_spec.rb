@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'byebug'
 
 RSpec.describe Post, type: :model do
   let(:content) { "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus, nulla vel condimentum ornare, arcu lorem hendrerit purus, ac sagittis ipsum nisl nec erat. Morbi porta sollicitudin leo, eu cursus libero posuere ac. Sed ac ultricies ante. Donec nec nulla ipsum. Nunc eleifend, ligula ut volutpat." }
@@ -20,8 +21,7 @@ RSpec.describe Post, type: :model do
   let(:non_clickbait) { Post.new(valid_attrs.merge(title: "True Facts")) }
 
   it "is valid" do
-    expect(valid_post).to be_valid
-  end
+    expect(valid_post).to be_valid end
 
   it "is invalid without a title" do
     expect(missing_title).to be_invalid
